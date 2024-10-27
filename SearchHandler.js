@@ -1,3 +1,6 @@
+// SearchHandler.js for Pankiverse/AI-Generated recipe book
+// Copyright (c) 2024 llama-3.1-sonar-large-128k-online
+
 // Function to create and insert the slider
 function createSlider() {
     const sliderContainer = document.createElement('div');
