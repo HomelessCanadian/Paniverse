@@ -51,9 +51,6 @@ const filterTerms = [
     'freshly squeezed', 'squeezed', 'chopped', 'peeled', 'diced', 
     'sliced', 'minced', 'grated', 'shredded', 'crushed', 'pureed', 
     'roasted', 'boiled', 'steamed', 'fried', 'baked',
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 
-    '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', 
-    '24', '25', '26', '27', '28', '29', '30',
     'pinch', 'dash', 'of', 'and', 'with', 'for',
     'to taste', 'to preference', 'to desired consistency',
     'until', 'until golden brown', 'until tender', 'until cooked through',
@@ -66,19 +63,21 @@ const filterTerms = [
     'if desired', 'to garnish', 'for serving', 'before cooking', 
     'after cooking', 'while cooking'
 ];
-
-
+//List of exact match terms to filter out
+const exactMatchTerms = [
+    /\bml\b/, /\bmg\b/, /\bg\b/, /\bL\b/, /\bcm\b/
+];
 // Function to filter ingredient text
 function filterIngredientText(text) {
     let filteredText = text.toLowerCase();
-
     filterTerms.forEach(term => {
-        filteredText = filteredText.replace(new RegExp(term, 'g'), '').trim();
+        filteredText = filteredText.replace(new RegExp(`\\b${term}\\b`, 'g'), '').trim();
     });
-
+    exactMatchTerms.forEach(term => {
+        filteredText = filteredText.replace(term, '').trim();
+    });
     return filteredText;
 }
-
 // Function to update links
 function updateLinks(store) {
     try {
