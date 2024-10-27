@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-container input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #3e8e41;
+        }
+        .confirmation-screen {
+            display: none;
+            text-align: center;
+        }
+        .confirmation-screen.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required autocomplete="username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+
+        <button type="submit">Login</button>
+    </form>
+    <div class="confirmation-screen">
+        <h2>Confirmation Screen</h2>
+        <p>Login successful You will be redirected shortly.</p>
+    </div>
+</div>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const confirmationScreen = document.querySelector('.confirmation-screen');
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Validate the form fields (basic example)
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username && password) {
+            // Show the confirmation screen
+            confirmationScreen.classList.add('show');
+            // Hide the form
+            loginForm.style.display = 'none';
+
+            // Optional: Redirect after a few seconds
+            setTimeout(() => {
+                window.location.href = 'https://example.com'; // Replace with your desired URL
+            }, 3000);
+        } else {
+            alert('Please fill in both username and password fields.');
+        }
+    });
+</script>
+
+</body>
+</html>
