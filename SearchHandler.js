@@ -39,15 +39,21 @@ const storeUrls = {
 
 // List of unnecessary terms to filter out
 const filterTerms = [
-    '1/2 cup of', '1/3 cup of', '1/4 cup of', '1/8 cup of',
-    '1/2 of', '1/4 of', '1/8 of',
-    'tablespoons', 'tablespoon', '(tbsp)s', '(tbsp)', 'tbsp',
-    'teaspoons', 'teaspoon', '(tsp)s', '(tsp)', 'tsp',
-    'ounces', 'ounce', '(oz)s', '(oz)', 'oz',
-    'pounds', 'pound', '(lb)s', '(lb)', 'lb',
-    'grams', 'gram', '(g)s', '(g)', 'g',
-    'milliliters', 'milliliter', '(ml)s', '(ml)', 'ml',
-    'liters', 'liter', '(L)s', '(L)', 'L',
+    '1/2', '1/3', '1/4', '1/8',
+    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', 
+    '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32',
+    'tablespoons', 'tablespoon', 
+    'teaspoons', 'teaspoon', 
+    'ounces', 'ounce', 
+    'pounds', 'pound', 
+    'grams', 'gram', 
+    'milliliters', 'milliliter', 
+    'liters', 'liter', 
+    'fluid ounces', 'fluid ounce', 
+    'cups', 'cup', '(cups)', '(cup)',
+    'pints', 'pint', 
+    'quarts', 'quart', 
+    'gallons', 'gallon', 
     'freshly squeezed', 'squeezed', 'chopped', 'peeled', 'diced', 
     'sliced', 'minced', 'grated', 'shredded', 'crushed', 'pureed', 
     'roasted', 'boiled', 'steamed', 'fried', 'baked',
@@ -63,10 +69,14 @@ const filterTerms = [
     'if desired', 'to garnish', 'for serving', 'before cooking', 
     'after cooking', 'while cooking'
 ];
-//List of exact match terms to filter out
+
+// List of exact match terms to filter out
 const exactMatchTerms = [
-    /\bml\b/, /\bmg\b/, /\bg\b/, /\bL\b/, /\bcm\b/
+    /\bml\b/, /\bmg\b/, /\bg\b/, /\bL\b/, /\bcm\b/,
+    /\btbsp\b/, /\btsp\b/, /\boz\b/, /\blb\b/,
+    /\bfl oz\b/, /\bcup\b/, /\bpt\b/, /\bqt\b/, /\bgal\b/
 ];
+
 // Function to filter ingredient text
 function filterIngredientText(text) {
     let filteredText = text.toLowerCase();
